@@ -46,7 +46,7 @@ permalink: /selection
       content: url("https://github.com/Code-Demons/miniproject/assets/40652645/4f671c77-a146-4df5-9100-235d6c833a41");
     }
     .athlete-option.insertion:hover img {
-      content: url("https://github.com/Code-Demons/miniproject/assets/40652645/6d08b64d-399b-4a93-98ab-cc179eb4ced5");
+      content: url("https://github.com/Code-Demons/miniproject/assets/40652645/adcf3d8a-8d5a-4605-9dcb-3443fb3f1480");
     }
     #attribute-section {
       position: fixed;
@@ -79,7 +79,7 @@ permalink: /selection
     </div>
     <!-- Issac Insert Athlete -->
     <div class="athlete-option insertion" onmouseover="showAttributes('Issac Insert Attributes')" onmouseout="hideAttributes()">
-      <img src="https://github.com/Code-Demons/miniproject/assets/40652645/78f15b09-37f0-441b-b230-3d3663347a38" alt="Insertion Athlete">
+      <img src="https://github.com/Code-Demons/miniproject/assets/40652645/ce479d7a-0c77-4b9e-8f99-453e365403ac" alt="Insertion Athlete">
       <span>Issac Insert</span>
     </div>
   </div>
