@@ -59,50 +59,71 @@ permalink: /selection
     }
   </style>
 </head>
+<!-- ... your existing HTML code ... -->
+
 <body>
 
   <div class="athlete-selector">
     <!-- Bubble Athlete -->
-    <div class="athlete-option bubble" onmouseover="showAttributes('Billy Bubble Attributes')" onmouseout="hideAttributes()">
+    <div class="athlete-option bubble" onclick="showFullAttributes('Billy Bubble Attributes', this)" onmouseover="showAttributes('Billy Bubble Attributes')" onmouseout="hideAttributes()">
       <img src="https://github.com/Code-Demons/miniproject/assets/40652645/4049e8b1-4b24-4c6f-a080-24504607145d" alt="Bubble Athlete">
       <span>Billy Bubble</span>
     </div>
     <!-- Merge Athlete -->
-    <div class="athlete-option merge" onmouseover="showAttributes('Martin Merge Attributes')" onmouseout="hideAttributes()">
+    <div class="athlete-option merge" onclick="showFullAttributes('Martin Merge Attributes', this)" onmouseover="showAttributes('Martin Merge Attributes')" onmouseout="hideAttributes()">
       <img src="https://github.com/Code-Demons/miniproject/assets/40652645/245c81fd-0ccd-4a52-acee-af09a34baaad" alt="Merge Athlete">
       <span>Martin Merge</span>
     </div>
     <!-- Sammy Select Athlete -->
-    <div class="athlete-option selection" onmouseover="showAttributes('Sammy Select Attributes')" onmouseout="hideAttributes()">
+    <div class="athlete-option selection" onclick="showFullAttributes('Sammy Select Attributes', this)" onmouseover="showAttributes('Sammy Select Attributes')" onmouseout="hideAttributes()">
       <img src="https://github.com/Code-Demons/miniproject/assets/40652645/ce479d7a-0c77-4b9e-8f99-453e365403ac" alt="Selection Athlete">
       <span>Sammy Select</span>
     </div>
     <!-- Issac Insert Athlete -->
-    <div class="athlete-option insertion" onmouseover="showAttributes('Issac Insert Attributes')" onmouseout="hideAttributes()">
+    <div class="athlete-option insertion" onclick="showFullAttributes('Issac Insert Attributes', this)" onmouseover="showAttributes('Issac Insert Attributes')" onmouseout="hideAttributes()">
       <img src="https://github.com/Code-Demons/miniproject/assets/40652645/78f15b09-37f0-441b-b230-3d3663347a38" alt="Insertion Athlete">
       <span>Issac Insert</span>
     </div>
   </div>
   
-  <div id="attribute-section"></div>
+  <div id="attribute-section" onclick="hideFullAttributes()">
+    <div id="full-attributes"></div>
+  </div>
 
   <script>
-    function showAttributes(attributes) {
-      document.getElementById("attribute-section").innerHTML = attributes;
-      document.getElementById("attribute-section").style.display = "block";
-    }
+  function showAttributes(attributes) {
+    document.getElementById("attribute-section").innerHTML = attributes;
+    document.getElementById("attribute-section").style.display = "block";
+  }
 
-    function hideAttributes() {
-      document.getElementById("attribute-section").style.display = "none";
-    }
-  </script>
+  function hideAttributes() {
+    document.getElementById("attribute-section").style.display = "none";
+  }
+
+  function showFullAttributes(attributes, athleteElement) {
+    document.getElementById("full-attributes").innerHTML = attributes;
+    document.getElementById("attribute-section").style.display = "flex";
+    
+    // Hide all athletes except the selected one
+    document.querySelectorAll('.athlete-option').forEach(function(option) {
+      if (option !== athleteElement) {
+        option.style.display = 'none';
+      }
+    });
+
+    // Display only the selected athlete
+    athleteElement.style.display = 'flex';
+  }
+
+  function hideFullAttributes() {
+    document.getElementById("attribute-section").style.display = "none";
+
+    // Show all athletes
+    document.querySelectorAll('.athlete-option').forEach(function(option) {
+      option.style.display = 'flex';
+    });
+  }
+</script>
 
 </body>
 </html>
-
-
-
-<!-- Insertion Sort Athlete
-https://github.com/Code-Demons/miniproject/assets/40652645/78f15b09-37f0-441b-b230-3d3663347a38 Not Selected
-
-https://github.com/Code-Demons/miniproject/assets/40652645/6d08b64d-399b-4a93-98ab-cc179eb4ced5 Selected-->
