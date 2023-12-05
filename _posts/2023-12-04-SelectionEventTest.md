@@ -46,13 +46,15 @@ permalink: /eventselectiontest
             width: 100%;
             height: 300px;
             object-fit: cover;
-            transition: transform 0.3s, border 0.3s; /* Adjusted transition */
+            transition: transform 0.3s, border 0.3s, opacity 0.5s; /* Added opacity transition */
             border: 5px solid transparent; /* Set initial transparent border */
             box-sizing: border-box; /* Include border in width/height calculations */
+            opacity: 1; /* Set initial opacity */
         }
         .event img:hover {
             border: 5px solid #ffcc00; /* Yellow border on hover */
             transform: scale(1.1); /* Increase scale on hover */
+            opacity: 0.7; /* Reduce opacity on hover */
         }
         .event .video-container {
             position: absolute;
