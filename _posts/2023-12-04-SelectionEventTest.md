@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Event Selection
-permalink: /eventselection
+title: Event Selection Test
+permalink: /eventselectiontest
 ---
 <head>
     <meta charset="UTF-8">
