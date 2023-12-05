@@ -97,6 +97,11 @@ permalink: /eventselectiontest
             <h2>Ski Event</h2>
             <a href="/miniproject/ski">
                 <img alt="Skislope" src="https://github.com/Code-Demons/miniproject/assets/40652645/37a3fadc-9af0-48e6-b529-23b60c2b5064">
+                <div class="video-container">
+                    <video autoplay muted loop>
+                        <source src="https://github.com/Code-Demons/miniproject/assets/40652645/050809a8-582c-4a25-a24e-7ce457b76ead" type="video/mp4">
+                    </video>
+                </div>
             </a>
         </div>
     </div>
