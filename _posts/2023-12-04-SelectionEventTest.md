@@ -104,7 +104,7 @@ permalink: /eventselectiontest
                 <img alt="Swimming" src="https://github.com/Code-Demons/miniproject/assets/40652645/33f16454-fa1a-4e86-ab14-fb253ee790cc">
                 <div class="video-container">
                     <video autoplay muted loop>
-                        <source src="https://github.com/Code-Demons/miniproject/assets/40652645/33f16454-fa1a-4e86-ab14-fb253ee790cc" type="video/mp4">
+                        <source src="https://github.com/Code-Demons/miniproject/assets/40652645/c444655e-d2b3-459a-bc93-9fe9b16d0d89" type="video/mp4">
                     </video>
                 </div>
             </a>
@@ -135,4 +135,4 @@ permalink: /eventselectiontest
 </body>
 
 
-<!-- https://github.com/Code-Demons/miniproject/assets/40652645/33f16454-fa1a-4e86-ab14-fb253ee790cc -->
+<!-- https://github.com/Code-Demons/miniproject/assets/40652645/c444655e-d2b3-459a-bc93-9fe9b16d0d89 -->

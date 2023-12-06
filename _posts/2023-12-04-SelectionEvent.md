@@ -44,7 +44,7 @@ permalink: /eventselection
         }
         .event img {
             width: 100%;
-            height: 300px;
+            height: 250px;
             object-fit: cover;
             transition: transform 0.3s, border 0.3s, opacity 0.5s; /* Added opacity transition */
             border: 5px solid transparent; /* Set initial transparent border */
@@ -99,6 +99,17 @@ permalink: /eventselection
             </a>
         </div>
         <div class="event">
+            <h2>Swimming Event</h2>
+            <a href="/miniproject/swimming">
+                <img alt="Swimming" src="https://github.com/Code-Demons/miniproject/assets/40652645/33f16454-fa1a-4e86-ab14-fb253ee790cc">
+                <div class="video-container">
+                    <video autoplay muted loop>
+                        <source src="https://github.com/Code-Demons/miniproject/assets/40652645/c444655e-d2b3-459a-bc93-9fe9b16d0d89" type="video/mp4">
+                    </video>
+                </div>
+            </a>
+        </div>
+        <div class="event">
             <h2>Ski Event</h2>
             <a href="/miniproject/ski">
                 <img alt="Skislope" src="https://github.com/Code-Demons/miniproject/assets/40652645/37a3fadc-9af0-48e6-b529-23b60c2b5064">
@@ -109,5 +120,19 @@ permalink: /eventselection
                 </div>
             </a>
         </div>
+        <div class="event">
+            <h2>New Event</h2>
+            <a href="/miniproject/newevent">
+                <img alt="New Event" src="https://github.com/Code-Demons/miniproject/assets/40652645/YOUR-NEW-EVENT-IMAGE">
+                <div class="video-container">
+                    <video autoplay muted loop>
+                        <source src="https://github.com/Code-Demons/miniproject/assets/40652645/YOUR-NEW-EVENT-VIDEO" type="video/mp4">
+                    </video>
+                </div>
+            </a>
+        </div>
     </div>
 </body>
+
+
+<!-- https://github.com/Code-Demons/miniproject/assets/40652645/c444655e-d2b3-459a-bc93-9fe9b16d0d89 -->
