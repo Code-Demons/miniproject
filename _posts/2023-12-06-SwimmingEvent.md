@@ -3,8 +3,7 @@ layout: default
 title: Swimming Event
 permalink: /swimming
 ---
-<img width="750" alt="Skislope" 
-src="https://github.com/Code-Demons/miniproject/assets/40652645/33f16454-fa1a-4e86-ab14-fb253ee790cc">
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,10 +32,10 @@ src="https://github.com/Code-Demons/miniproject/assets/40652645/33f16454-fa1a-4e
 
   // Runner objects with different speeds
   const runners = [
-    { name: 'Bubble', speed: 2, color: 'red', position: 0, lane: 1 },
-    { name: 'Insertion', speed: 3, color: 'blue', position: 0, lane: 2 },
-    { name: 'Merge', speed: 4, color: 'green', position: 0, lane: 3 },
-    { name: 'Quick', speed: 5, color: 'yellow', position: 0, lane: 4 },
+    { name: 'Bubble Sort', speed: 2, color: 'red', position: 0, lane: 1 },
+    { name: 'Insertion Sort', speed: 3, color: 'blue', position: 0, lane: 2 },
+    { name: 'Merge Sort', speed: 4, color: 'green', position: 0, lane: 3 },
+    { name: 'Quick Sort', speed: 5, color: 'yellow', position: 0, lane: 4 },
     // Add more runners as needed
   ];
 
