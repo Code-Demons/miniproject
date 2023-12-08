@@ -4,7 +4,6 @@ title: Swimming Event
 permalink: /swimming
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -44,7 +43,7 @@ permalink: /swimming
   backgroundImage.src = 'https://github.com/Code-Demons/miniproject/assets/40652645/33f16454-fa1a-4e86-ab14-fb253ee790cc';
 
   function drawBackground() {
-    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(backgroundImage, -60, 0, canvas.width + 120, canvas.height);
   }
 
   function drawRunner(runner) {
