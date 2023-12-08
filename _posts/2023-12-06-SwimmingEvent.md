@@ -23,20 +23,24 @@ permalink: /swimming
 <button onclick="startRace()">Start Race</button>
 <button onclick="resetRace()">Reset Race</button>
 
+<div id="stats"></div>
+
+
 <script>
   const canvas = document.getElementById('raceCanvas');
   const ctx = canvas.getContext('2d');
 
-  const raceDurationInSeconds = 10; // Adjust the duration as needed
-
   // Runner objects with different speeds
   const runners = [
-    { name: 'Bubble Sort', speed: 2, color: 'red', position: 0, lane: 1 },
-    { name: 'Insertion Sort', speed: 3, color: 'blue', position: 0, lane: 2 },
-    { name: 'Merge Sort', speed: 4, color: 'green', position: 0, lane: 3 },
-    { name: 'Quick Sort', speed: 5, color: 'yellow', position: 0, lane: 4 },
+    { name: 'Bubble Sort', speed: 16, color: 'red', position: 0, lane: 1, done: false },
+    { name: 'Insertion Sort', speed: 8, color: 'blue', position: 0, lane: 2, done: false },
+    { name: 'Merge Sort', speed: 3, color: 'green', position: 0, lane: 3, done: false },
+    { name: 'Quick Sort', speed: 3, color: 'yellow', position: 0, lane: 4, done: false },
     // Add more runners as needed
   ];
+
+  // define stats element
+  const statsElement = document.getElementById('stats');
 
   // Background image
   const backgroundImage = new Image();
@@ -51,24 +55,36 @@ permalink: /swimming
     ctx.fillRect(runner.position, 35*runner.lane + 5, 20, 20);
   }
 
+
+  function updateStats() {
+    let statsHTML = '<h3>Runner Stats</h3>';
+    for (const runner of runners) {
+      statsHTML += `<p>${runner.name} Speed: ${runner.speed}</p>`;
+    }
+    statsElement.innerHTML = statsHTML;
+  }
+
   function update(timestamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBackground();
 
     for (const runner of runners) {
-      runner.position += runner.speed;
-      drawRunner(runner);
-
-      if (runner.position > canvas.width - 20) {
-        alert(`${runner.name} has won the race!`);
-        resetRace();
-        return;
+      if (runner.done == false){
+        runner.position += runner.speed/3;     
       }
+      if (runner.position >= canvas.width - 20) {
+        runner.done = true
+      }
+      drawRunner(runner);
     }
     requestAnimationFrame(update);
+    updateStats();
   }
 
   function startRace() {
+    for (const runner of runners) {
+      runner.done = false
+    }
     update();
   }
 
@@ -80,6 +96,7 @@ permalink: /swimming
     // Clear the canvas after resetting
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBackground();
+    updateStats();
   }
 
   // Start the race
