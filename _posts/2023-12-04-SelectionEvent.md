@@ -90,7 +90,7 @@ permalink: /eventselection
         <div class="event">
             <h2>Track Event</h2>
             <a href="/miniproject/track">
-                <img alt="Trackfield" src="https://github.com/Code-Demons/miniproject/assets/111464993/b8eb1715-c85b-401d-893c-b11a8f25024a">
+                <img alt="Trackfield" src="https://github.com/Code-Demons/miniproject/assets/40652645/131c0df0-1723-4bd6-81ba-41cec8aa1a57">
                 <div class="video-container">
                     <video autoplay muted loop>
                         <source src="https://github.com/Code-Demons/miniproject/assets/40652645/16d8a489-e778-4a76-ae93-39e9224b52ae" type="video/mp4">
