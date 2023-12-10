@@ -4,6 +4,7 @@ title: Swimming Event
 permalink: /swimming
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -20,11 +21,11 @@ permalink: /swimming
 <body>
 
 <canvas id="raceCanvas" width="800" height="280"></canvas>
-<button onclick="startRace()">Start Race</button>
+<input type="number" id="fibNumber" placeholder="Enter Fibonacci Number">
+<button onclick="runFibonacciRace()">Run Fibonacci Race</button>
 <button onclick="resetRace()">Reset Race</button>
 
 <div id="stats"></div>
-
 
 <script>
   const canvas = document.getElementById('raceCanvas');
@@ -32,14 +33,13 @@ permalink: /swimming
 
   // Runner objects with different speeds
   const runners = [
-    { name: 'Bubble Sort', speed: 16, color: 'red', position: 0, lane: 1, done: false },
-    { name: 'Insertion Sort', speed: 8, color: 'blue', position: 0, lane: 2, done: false },
-    { name: 'Merge Sort', speed: 3, color: 'green', position: 0, lane: 3, done: false },
-    { name: 'Quick Sort', speed: 3, color: 'yellow', position: 0, lane: 4, done: false },
-    // Add more runners as needed
+    { name: 'For Loop', speed: 0, color: 'red', position: 0, lane: 1, done: false },
+    { name: 'Recursion', speed: 0, color: 'blue', position: 0, lane: 2, done: false },
+    { name: 'While Loop', speed: 0, color: 'green', position: 0, lane: 3, done: false },
+    { name: 'Dynamic Programming', speed: 0, color: 'yellow', position: 0, lane: 4, done: false }
   ];
 
-  // define stats element
+  // Define stats element
   const statsElement = document.getElementById('stats');
 
   // Background image
@@ -52,9 +52,8 @@ permalink: /swimming
 
   function drawRunner(runner) {
     ctx.fillStyle = runner.color;
-    ctx.fillRect(runner.position, 35*runner.lane + 5, 20, 20);
+    ctx.fillRect(runner.position, 35 * runner.lane + 5, 20, 20);
   }
-
 
   function updateStats() {
     let statsHTML = '<h3>Runner Stats</h3>';
@@ -64,16 +63,16 @@ permalink: /swimming
     statsElement.innerHTML = statsHTML;
   }
 
-  function update(timestamp) {
+  function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBackground();
 
     for (const runner of runners) {
-      if (runner.done == false){
-        runner.position += runner.speed/3;     
+      if (!runner.done) {
+        runner.position += runner.speed / 3;
       }
       if (runner.position >= canvas.width - 20) {
-        runner.done = true
+        runner.done = true;
       }
       drawRunner(runner);
     }
@@ -81,9 +80,49 @@ permalink: /swimming
     updateStats();
   }
 
+  async function runFibonacciRace() {
+    const fibNumber = document.getElementById('fibNumber').value;
+    if (!fibNumber) {
+      alert('Please enter a Fibonacci number');
+      return;
+    }
+
+    // Reset the race
+    resetRace();
+
+    // Define your backend endpoints
+  const endpoints = [
+    `http://localhost:8085/fibonacci/forloop/${fibNumber}`,
+    `http://localhost:8085/fibonacci/recursion/${fibNumber}`,
+    `http://localhost:8085/fibonacci/whileloop/${fibNumber}`,
+    `http://localhost:8085/fibonacci/dynamic/${fibNumber}`
+  ];
+
+    // Fetch data from each endpoint and update the runners
+    for (let i = 0; i < runners.length; i++) {
+      const startTime = performance.now();
+      const response = await fetch(endpoints[i]);
+      const endTime = performance.now();
+      const timeTaken = endTime - startTime;
+
+      // Update runner speed based on time taken
+      runners[i].speed = calculateSpeed(timeTaken);
+    }
+
+    // Start the race
+    startRace();
+  }
+
+  function calculateSpeed(timeTaken) {
+    // Convert time taken to a suitable speed for the animation
+    // Smaller time should result in higher speed
+    return Math.max(1, 1000 / timeTaken);
+  }
+
   function startRace() {
     for (const runner of runners) {
-      runner.done = false
+      runner.done = false;
+      runner.position = 0;
     }
     update();
   }
@@ -91,6 +130,7 @@ permalink: /swimming
   function resetRace() {
     for (const runner of runners) {
       runner.position = 0;
+      runner.done = false;
     }
     cancelAnimationFrame(update);
     // Clear the canvas after resetting
@@ -99,11 +139,9 @@ permalink: /swimming
     updateStats();
   }
 
-  // Start the race
-  //update();
+  // Initialize stats
+  updateStats();
 </script>
 
 </body>
 </html>
-
-<!-- Bubble Sort Swimming Animation https://github.com/Code-Demons/miniproject/assets/40652645/4f043398-2031-464d-aefc-0ffc0ea0f689 -->
