@@ -49,10 +49,9 @@ permalink: /bubbleathlete
     <div id="attributes">
         <h1>Attributes for Billy Bubble</h1>
         <ul>
-            <li>Speed: Fast</li>
+            <li>Speed: </li>
             <li>Strength: Strong</li>
             <li>Agility: Agile</li>
-            <li>Skill: Skilled</li>
         </ul>
     </div>
 </div>
