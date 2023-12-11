@@ -1,3 +1,3 @@
-## Ethan Tran's Website
+## Code Demon's Website
 
-[Link to Site](https://realethantran.github.io/ethanPages/)
+[Link to Site](https://code-demons.github.io/miniproject/)
