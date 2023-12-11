@@ -4,21 +4,25 @@ title: Track
 permalink: /track
 ---
 
-<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-  canvas {
-    border: 1px solid #000;
-    display: block;
-    margin: 20px auto;
-  }
-  #results {
-    margin-top: 20px;
-  }
-</style>
-<title>Sorting Algorithm Race Simulation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        canvas {
+            border: 1px solid #000;
+            display: block;
+            margin: 20px auto;
+        }
+        #results {
+            margin-top: 20px;
+        }
+        .runner {
+            position: absolute;
+            height: 50px; /* Adjust height as needed */
+            width: 50px; /* Adjust width as needed */
+        }
+    </style>
+    <title>Sorting Algorithm Race Simulation</title>
 </head>
 <body>
 
@@ -35,10 +39,10 @@ permalink: /track
  const ctx = canvas.getContext('2d');
 
  const runners = [
-   { name: 'Bubble Sort', speed: 0, color: 'red', position: 0, lane: 1, done: false },
-   { name: 'Insertion Sort', speed: 0, color: 'blue', position: 0, lane: 2, done: false },
-   { name: 'Merge Sort', speed: 0, color: 'green', position: 0, lane: 3, done: false },
-   { name: 'Selection Sort', speed: 0, color: 'yellow', position: 0, lane: 4, done: false }
+   { name: 'Bubble Sort', speed: 0, imageUrl: 'https://github.com/Code-Demons/miniproject/assets/40652645/4049e8b1-4b24-4c6f-a080-24504607145d', position: 0, lane: 1, done: false },
+   { name: 'Insertion Sort', speed: 0, imageUrl: 'https://github.com/Code-Demons/miniproject/assets/40652645/78f15b09-37f0-441b-b230-3d3663347a38', position: 0, lane: 2, done: false },
+   { name: 'Merge Sort', speed: 0, imageUrl: 'https://github.com/Code-Demons/miniproject/assets/40652645/245c81fd-0ccd-4a52-acee-af09a34baaad', position: 0, lane: 3, done: false },
+   { name: 'Selection Sort', speed: 0, imageUrl: 'https://github.com/Code-Demons/miniproject/assets/40652645/ce479d7a-0c77-4b9e-8f99-453e365403ac', position: 0, lane: 4, done: false }
  ];
 
  const resultsElement = document.getElementById('results');
@@ -51,8 +55,9 @@ permalink: /track
  }
 
  function drawRunner(runner) {
-   ctx.fillStyle = runner.color;
-   ctx.fillRect(runner.position, 35 * runner.lane + 63, 23, 23);
+   const runnerImage = new Image();
+   runnerImage.src = runner.imageUrl;
+   ctx.drawImage(runnerImage, runner.position, 35 * runner.lane + 63, 50, 50); // Adjust width and height as needed
  }
 
  function update() {
@@ -79,14 +84,6 @@ permalink: /track
  }
 
  async function runSortingRace() {
-   const arrayInput = document.getElementById('arrayInput').value;
-   if (!arrayInput) {
-     alert('Please enter an array to sort');
-     return;
-   }
-
-   const array = arrayInput.split(',').map(Number);
-
    if (animationFrameId) {
      cancelAnimationFrame(animationFrameId);
    }
@@ -94,10 +91,10 @@ permalink: /track
    resetRace();
 
    const endpoints = [
-     `http://localhost:8085/sort/bubble/${array}`,
-     `http://localhost:8085/sort/insertion/${array}`,
-     `http://localhost:8085/sort/merge/${array}`,
-     `http://localhost:8085/sort/selection/${array}`
+     'http://localhost:8085/sort/bubble',
+     'http://localhost:8085/sort/insertion',
+     'http://localhost:8085/sort/merge',
+     'http://localhost:8085/sort/selection'
    ];
 
    let maxTime = 0;
@@ -158,8 +155,4 @@ permalink: /track
 </script>
 
 </body>
-</html>
-
-
-
 
