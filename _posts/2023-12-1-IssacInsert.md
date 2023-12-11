@@ -39,10 +39,9 @@ permalink: /insertathlete
     <div id="attributes">
         <h1>Attributes for Issac Insert</h1>
         <ul>
-            <li>Speed: Fast</li>
-            <li>Strength: Strong</li>
-            <li>Agility: Agile</li>
-            <li>Skill: Skilled</li>
+           <li>Speed: Fast</li>
+            <li>Strength: Linked Lists</li>
+            <li>Endurance: Weak</li>
         </ul>
     </div>
 </div>

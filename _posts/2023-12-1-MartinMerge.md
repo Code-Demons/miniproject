@@ -39,8 +39,9 @@ permalink: /mergeathlete
     <div id="attributes">
         <h1>Attributes for Martin Merge</h1>
         <ul>
-            <li>Speed: Slow</li>
-            <li>Strengths: Strong</li>
+            <li>Speed: Medium</li>
+            <li>Strength: Long Datasets</li>
+            <li>Endurance: Strong</li>
         </ul>
     </div>
 </div>

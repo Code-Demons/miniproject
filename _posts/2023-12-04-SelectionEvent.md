@@ -32,9 +32,9 @@ permalink: /eventselection
         }
         .container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr; /* Adjusted to have three columns */
             grid-gap: 20px;
-            z-index: 1; /* Ensure content appears above the video */
+            z-index: 1;
         }
         .event {
             position: relative;
@@ -116,17 +116,6 @@ permalink: /eventselection
                 <div class="video-container">
                     <video autoplay muted loop>
                         <source src="https://github.com/Code-Demons/miniproject/assets/40652645/050809a8-582c-4a25-a24e-7ce457b76ead" type="video/mp4">
-                    </video>
-                </div>
-            </a>
-        </div>
-        <div class="event">
-            <h2>New Event</h2>
-            <a href="/miniproject/newevent">
-                <img alt="New Event" src="https://github.com/Code-Demons/miniproject/assets/40652645/YOUR-NEW-EVENT-IMAGE">
-                <div class="video-container">
-                    <video autoplay muted loop>
-                        <source src="https://github.com/Code-Demons/miniproject/assets/40652645/YOUR-NEW-EVENT-VIDEO" type="video/mp4">
                     </video>
                 </div>
             </a>

@@ -40,9 +40,8 @@ permalink: /selectionathlete
         <h1>Attributes for Sammy Select</h1>
         <ul>
             <li>Speed: Fast</li>
-            <li>Strength: Strong</li>
-            <li>Agility: Agile</li>
-            <li>Skill: Skilled</li>
+            <li>Strength: Datasets with fewer than 20 elements</li>
+            <li>Endurance: Weak</li>
         </ul>
     </div>
 </div>
