@@ -4,98 +4,87 @@ title: Swimming Event
 permalink: /swimming
 ---
 
+
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-    }
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      border: 1px solid #000;
-      width: 100vw; /* Make the canvas full width of the viewport */
-      height: 100vh; /* Make the canvas full height of the viewport */
-      z-index: -1; /* Ensure it's behind other elements */
-    }
-    #stats {
-      font: 20px Arial; /* Set the font size and type for stats */
-      position: absolute;
-      top: 10px;
-      left: 10px;
-    }
-  </style>
-  <title>Olympic Race Simulation</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style>
+   canvas {
+     border: 1px solid #000;
+     display: block;
+     margin: 20px auto;
+   }
+ </style>
+ <title>Olympic Race Simulation</title>
 </head>
 <body>
 
-<canvas id="raceCanvas"></canvas>
+
+<canvas id="raceCanvas" width="800" height="280"></canvas>
 <input type="number" id="fibNumber" placeholder="Enter Fibonacci Number">
 <button onclick="runFibonacciRace()">Run Fibonacci Race</button>
 <button onclick="resetRace()">Reset Race</button>
 
+
 <div id="stats"></div>
 
+
 <script>
+  let animationFrameId;
   const canvas = document.getElementById('raceCanvas');
   const ctx = canvas.getContext('2d');
 
-  // Runner objects with different speeds
   const runners = [
-    { name: 'For Loop', speed: 0, color: 'red', position: 0, lane: 1, done: false, yPos: 60 },
-    { name: 'Recursion', speed: 0, color: 'blue', position: 0, lane: 2, done: false, yPos: 170 },
-    { name: 'While Loop', speed: 0, color: 'green', position: 0, lane: 3, done: false, yPos: 265 },
-    { name: 'Dynamic Programming', speed: 0, color: 'yellow', position: 0, lane: 4, done: false, yPos: 370 }
+    { name: 'For Loop', speed: 0, color: 'red', position: 0, lane: 1, done: false },
+    { name: 'Recursion', speed: 0, color: 'blue', position: 0, lane: 2, done: false },
+    { name: 'While Loop', speed: 0, color: 'green', position: 0, lane: 3, done: false },
+    { name: 'Dynamic Programming', speed: 0, color: 'yellow', position: 0, lane: 4, done: false }
   ];
 
-  // Define stats element
   const statsElement = document.getElementById('stats');
 
-  // Background image
   const backgroundImage = new Image();
   backgroundImage.src = 'https://github.com/Code-Demons/miniproject/assets/40652645/33f16454-fa1a-4e86-ab14-fb253ee790cc';
 
   function drawBackground() {
-    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(backgroundImage, -60, 0, canvas.width + 120, canvas.height);
   }
 
   function drawRunner(runner) {
     ctx.fillStyle = runner.color;
-    ctx.fillRect(runner.position, runner.yPos, 20, 20);
+    ctx.fillRect(runner.position, 35 * runner.lane + 5, 20, 20);
   }
 
   function updateStats() {
-    statsElement.innerHTML = ''; // Clear previous content
+    let statsHTML = '<h3>Runner Stats</h3>';
     for (const runner of runners) {
-      const stats = `${runner.name}: ${runner.speed.toFixed(2)} px/ms`;
-      const statElement = document.createElement('p');
-      statElement.textContent = stats;
-      statElement.style.color = runner.color; // Set the color
-      statElement.style.position = 'absolute';
-      statElement.style.top = `${runner.yPos}px`; // Set the vertical position
-      statElement.style.left = '10px'; // Set the horizontal position
-      statsElement.appendChild(statElement);
+      statsHTML += `<p>${runner.name} Speed: ${runner.speed}</p>`;
     }
+    statsElement.innerHTML = statsHTML;
   }
 
   function update() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBackground();
 
+    let allRunnersDone = true;
     for (const runner of runners) {
       if (!runner.done) {
-        runner.position += runner.speed / 3;
-      }
-      if (runner.position >= canvas.width - 20) {
-        runner.done = true;
+        runner.position += runner.speed;
+        if (runner.position > canvas.width - 20) { // 20 is the width of the runner
+          runner.position = canvas.width - 20; // Stop the runner at the edge
+          runner.done = true;
+        } else {
+          allRunnersDone = false;
+        }
       }
       drawRunner(runner);
     }
-    requestAnimationFrame(update);
+
+    if (!allRunnersDone) {
+      animationFrameId = requestAnimationFrame(update);
+    }
     updateStats();
   }
 
@@ -106,10 +95,12 @@ permalink: /swimming
       return;
     }
 
-    // Reset the race
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+    }
+
     resetRace();
 
-    // Define your backend endpoints
     const endpoints = [
       `http://localhost:8085/fibonacci/forloop/${fibNumber}`,
       `http://localhost:8085/fibonacci/recursion/${fibNumber}`,
@@ -117,25 +108,29 @@ permalink: /swimming
       `http://localhost:8085/fibonacci/dynamic/${fibNumber}`
     ];
 
-    // Fetch data from each endpoint and update the runners
+    let maxTime = 0;
+    for (let i = 0; i < runners.length; i++) {
+      const startTime = performance.now();
+      const response = await fetch(endpoints[i]);
+      const endTime = performance.now();
+      const timeTaken = endTime - startTime;
+      maxTime = Math.max(maxTime, timeTaken);
+    }
+
     for (let i = 0; i < runners.length; i++) {
       const startTime = performance.now();
       const response = await fetch(endpoints[i]);
       const endTime = performance.now();
       const timeTaken = endTime - startTime;
 
-      // Update runner speed based on time taken
-      runners[i].speed = calculateSpeed(timeTaken);
+      runners[i].speed = calculateSpeed(timeTaken, maxTime);
     }
 
-    // Start the race
     startRace();
   }
 
-  function calculateSpeed(timeTaken) {
-    // Convert time taken to a suitable speed for the animation
-    // Smaller time should result in higher speed
-    return Math.max(1, 1000 / timeTaken);
+  function calculateSpeed(timeTaken, maxTime) {
+    return Math.max(1, maxTime - timeTaken);
   }
 
   function startRace() {
@@ -151,16 +146,17 @@ permalink: /swimming
       runner.position = 0;
       runner.done = false;
     }
-    cancelAnimationFrame(update);
-    // Clear the canvas after resetting
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+    }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBackground();
-    statsElement.innerHTML = ''; // Clear previous content
     updateStats();
   }
 
-  // Initialize stats
   updateStats();
 </script>
 
+
 </body>
+</html>
