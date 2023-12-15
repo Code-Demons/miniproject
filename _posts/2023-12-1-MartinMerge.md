@@ -39,9 +39,9 @@ permalink: /mergeathlete
     <div id="attributes">
         <h1>Attributes for Martin Merge</h1>
         <ul>
-            <li>Speed: Medium</li>
-            <li>Strength: Long Datasets</li>
-            <li>Endurance: Strong</li>
+            <li>Speed: Medium- The Merge sort comes in the middle when it comes to speed, not as good as other sorting algorithms when it comes to shorter data.</li>
+            <li>Strength: Long Datasets- The Merge sorts algorithm, breaks down the entire dataset into individual parts in a few steps then combines them back in order. Due to this it excels in longer data when compared to others that just switch around one or two elements at a time.</li>
+            <li>Endurance: Strong- The Merge sort though might not be as fast when it comes to shorter data, but can complete longer races (data) super fast and with ease. It is the most efficient sorting algorithm when it comes to longer data.</li>
         </ul>
     </div>
 </div>
