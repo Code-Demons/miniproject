@@ -49,9 +49,9 @@ permalink: /bubbleathlete
     <div id="attributes">
         <h1>Attributes for Billy Bubble</h1>
         <ul>
-            <li>Speed: Fast</li>
-            <li>Strength: Short Datasets</li>
-            <li>Endurance: Weak</li>
+            <li>Speed: Fast- Bubble sort is known to be one of the fastest sorting algorithms for shorter datasets, however on longer datasets it struggles because of simplistic nature of the sort just comparing two adjacent objects and seeing which one is greater swaping the numbers one by one.</li>
+            <li>Strength: Short Datasets- Struggles on longer datasets because switching two numbers at a time pales in comparison to merge sort breaking down the whole dataset and then combining it back in order.</li>
+            <li>Endurance: Weak- Can't do longer races (datasets) as efficiently as other sorting algorithms.</li>
         </ul>
     </div>
 </div>
