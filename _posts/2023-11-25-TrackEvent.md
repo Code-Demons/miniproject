@@ -16,11 +16,6 @@ permalink: /track
         #results {
             margin-top: 20px;
         }
-        .runner {
-            position: absolute;
-            height: 50px; /* Adjust height as needed */
-            width: 50px; /* Adjust width as needed */
-        }
     </style>
     <title>Sorting Algorithm Race Simulation</title>
 </head>
@@ -84,6 +79,12 @@ permalink: /track
  }
 
  async function runSortingRace() {
+    const arrayInput = document.getElementById('arrayInput').value;
+    if (!arrayInput) {
+        alert('Please enter an array to sort');
+        return;
+   }
+   const array = arrayInput.split(',').map(Number);
    if (animationFrameId) {
      cancelAnimationFrame(animationFrameId);
    }
@@ -91,10 +92,10 @@ permalink: /track
    resetRace();
 
    const endpoints = [
-     'http://localhost:8085/sort/bubble',
-     'http://localhost:8085/sort/insertion',
-     'http://localhost:8085/sort/merge',
-     'http://localhost:8085/sort/selection'
+     `http://localhost:8085/sort/bubble/${array}`,
+     `http://localhost:8085/sort/insertion/${array}`,
+     `http://localhost:8085/sort/merge/${array}`,
+     `http://localhost:8085/sort/selection/${array}`
    ];
 
    let maxTime = 0;
