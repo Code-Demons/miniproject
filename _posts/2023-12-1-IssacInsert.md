@@ -39,9 +39,9 @@ permalink: /insertathlete
     <div id="attributes">
         <h1>Attributes for Issac Insert</h1>
         <ul>
-           <li>Speed: with a speed of O(n^2) the speed of insertion sort is comparable to other sorting algorithms like it. </li>
-            <li>Strength: Partially completed arrays. Insertion Sort is preferred for fewer elements. It becomes fast when data is already sorted or nearly sorted because it skips the sorted values. Additionally, Insertion sort has less space complexity. Insertion sort only takes O(1) auxiliary space complexity. It sorts the entire array just by using an extra variable.</li>
-            <li>Endurance: Insertion sort is efficient for small data values. Large numbers and large data sets slow this algorithm down as it analyzes each element in an array several times each.</li>
+           <li><b>Speed:</b> with a speed of O(n^2) the speed of insertion sort is comparable to other sorting algorithms like it. </li>
+            <li><b>Strength:</b> Partially completed arrays. Insertion Sort is preferred for fewer elements. It becomes fast when data is already sorted or nearly sorted because it skips the sorted values. Additionally, Insertion sort has less space complexity. Insertion sort only takes O(1) auxiliary space complexity. It sorts the entire array just by using an extra variable.</li>
+            <li><b>Endurance:</b> Insertion sort is efficient for small data values. Large numbers and large data sets slow this algorithm down as it analyzes each element in an array several times each.</li>
         </ul>
     </div>
 </div>

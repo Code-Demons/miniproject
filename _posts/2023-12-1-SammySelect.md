@@ -39,9 +39,9 @@ permalink: /selectionathlete
     <div id="attributes">
         <h1>Attributes for Sammy Select</h1>
         <ul>
-            <li>Speed: Fast- Selection sort is one of the fastest sorting algorithms due to its extremely simplsitic nature. It works by just finding the smallest element and moving it to the front then going through it agian and finding the second smallest element and moving it to the second and so forth.</li>
-            <li>Strength: Arrays with fewer than 20 elements- Due to its simple nature on arrays longer than 20 elements it struggles and is more and more slower the longer the dataset is. </li>
-            <li>Endurance: Weak- When the data is shorter selection sort works the best due to the fact it reads the array faster the shorter it is so its able to find the next shortest element easier.</li>
+            <li><b>Speed:</b> Fast- Selection sort is one of the fastest sorting algorithms due to its extremely simplsitic nature. It works by just finding the smallest element and moving it to the front then going through it agian and finding the second smallest element and moving it to the second and so forth.</li>
+            <li><b>Strength:</b> Arrays with fewer than 20 elements- Due to its simple nature on arrays longer than 20 elements it struggles and is more and more slower the longer the dataset is. </li>
+            <li><b>Endurance:</b> Weak- When the data is shorter selection sort works the best due to the fact it reads the array faster the shorter it is so its able to find the next shortest element easier.</li>
         </ul>
     </div>
 </div>
