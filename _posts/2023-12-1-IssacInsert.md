@@ -29,6 +29,17 @@ permalink: /insertathlete
             padding: 20px;
             box-sizing: border-box;
         }
+        #continueButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -45,6 +56,8 @@ permalink: /insertathlete
         </ul>
     </div>
 </div>
+
+<button id="continueButton" onclick="location.href='/miniproject/eventselection'">Continue</button>
 
 </body>
 </html>
